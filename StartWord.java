@@ -20,7 +20,7 @@ public class StartWord {
 
 	private void run() {
 		// TODO Auto-generated method stub
-		String[][] strs = { {"hippo", "hi"}, {"hippo", "xip"}, {"hippo", "i"} };
+		String[][] strs = { {"hippo", "hi"}, {"hippo", "xip"}, {"hippo", "i"}, {"", "i"} };
 		
 		for ( String[] str : strs ) {
 			System.out.printf("a = %s, b = %s : %s\n", str[0], str[1], startWord(str[0], str[1]));
@@ -28,7 +28,18 @@ public class StartWord {
 	}
 
 	private String startWord(String str, String word) {
+		
+		if ( str.contentEquals("") ) return "";
 		if ( word.length() < 2 ) return str.substring(0,1);
+		
+		String wordFront = word.substring(1);
+		String strFront = str.substring(1);
+		
+		if ( strFront.startsWith(wordFront) ) {
+			return str.substring(0,word.length());
+		}
+		
+		return "";
 		
 	}
 
